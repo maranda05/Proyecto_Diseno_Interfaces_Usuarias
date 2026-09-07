@@ -1,0 +1,10 @@
+services:
+  # Entorno de PRODUCCIÓN (build estático + nginx).
+  # Uso: docker compose -f docker-compose.prod.yml up --build
+  sgm-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sgm-portal
+    ports:
+      - "8080:80"

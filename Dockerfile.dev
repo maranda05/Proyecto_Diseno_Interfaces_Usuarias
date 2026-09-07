@@ -1,0 +1,18 @@
+# Imagen de DESARROLLO: levanta el servidor de Vite con hot-reload.
+# Pensada para ir modificando el código y ver los cambios reflejados al instante.
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instala dependencias primero para aprovechar la cache de Docker
+COPY package*.json ./
+RUN npm install
+
+# El código fuente se monta como volumen en docker-compose,
+# esta copia solo sirve para poder levantar el contenedor de forma aislada.
+COPY . .
+
+EXPOSE 5173
+
+# --host es indispensable para poder acceder desde fuera del contenedor
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
