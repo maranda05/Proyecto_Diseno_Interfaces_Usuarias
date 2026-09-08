@@ -49,6 +49,7 @@ src/
                            solicitar tema, mis solicitudes)
     NotificacionesView.jsx← Vista "Notificaciones"
     DocumentosView.jsx    ← Vista "Documentos requeridos" (checklist)
+    SolicitudesView.jsx   ← Vista "Enviar solicitud formal" (upload + envío)
   App.jsx                ← Orquesta el estado global y la navegación
                            (reemplaza las funciones sueltas del <script>
                            del HTML original: go(), renderTemas(),
@@ -61,8 +62,8 @@ src/
 ## Qué se mantuvo igual que el HTML original
 
 - Todo el diseño visual (colores, tipografías, layout, componentes).
-- Las 4 vistas: Mi proceso, Temas disponibles, Notificaciones, Documentos.
-- La navegación por hash en la URL (#proceso, #temas, #notif, #documentos),
+- Las 5 vistas: Mi proceso, Temas disponibles, Solicitudes, Notificaciones, Documentos.
+- La navegación por hash en la URL (#proceso, #temas, #solicitudes, #notif, #documentos),
   compatible con el botón "atrás" del navegador.
 - El comportamiento estático/simulado: solicitar un tema, tildar documentos,
   marcar notificaciones como leídas — todo sigue siendo "de mentira" (no hay

@@ -109,6 +109,23 @@ export const notificacionesIniciales = [
   },
 ];
 
+export const tiposDocumento = [
+  'Informe de avance (memoria)',
+  'Informe final de memoria',
+  'Certificado de nivel de inglés',
+  'Copia digital de la memoria (PDF)',
+];
+
+export const solicitudesEnviadasIniciales = [
+  {
+    id: 1,
+    tipo: 'Informe de avance (memoria)',
+    archivo: 'avance_v3.pdf',
+    fecha: '5 de septiembre de 2026',
+    estado: 'revision',
+  },
+];
+
 export const documentos = {
   examenTitulo: [
     {

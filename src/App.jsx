@@ -4,16 +4,19 @@ import ProcesoView from './components/ProcesoView';
 import TemasView from './components/TemasView';
 import NotificacionesView from './components/NotificacionesView';
 import DocumentosView from './components/DocumentosView';
+import SolicitudesView from './components/SolicitudesView';
 import {
   usuario,
   proceso,
   temasIniciales,
   areas,
   notificacionesIniciales,
+  tiposDocumento,
+  solicitudesEnviadasIniciales,
   documentos as documentosIniciales,
 } from './data/mockData';
 
-const VIEWS = ['proceso', 'temas', 'notif', 'documentos'];
+const VIEWS = ['proceso', 'temas', 'solicitudes', 'notif', 'documentos'];
 
 function getViewFromHash() {
   const hash = window.location.hash.replace('#', '');
@@ -25,6 +28,7 @@ export default function App() {
   const [temas] = useState(temasIniciales);
   const [solicitudes, setSolicitudes] = useState([]);
   const [notificaciones, setNotificaciones] = useState(notificacionesIniciales);
+  const [solicitudesEnviadas, setSolicitudesEnviadas] = useState(solicitudesEnviadasIniciales);
   const [documentos, setDocumentos] = useState(documentosIniciales);
 
   // Navegación: mantiene el hash en la URL, igual que el prototipo original,
@@ -81,6 +85,37 @@ export default function App() {
     });
   }, []);
 
+  const handleEnviarSolicitud = useCallback(
+    (solicitud) => {
+      setSolicitudesEnviadas((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          tipo: solicitud.tipo,
+          archivo: solicitud.archivo,
+          fecha: new Date().toLocaleDateString('es-CL', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          }),
+          estado: 'revision',
+        },
+      ]);
+      setNotificaciones((prev) => [
+        {
+          id: Date.now(),
+          type: 'status',
+          title: `Solicitud enviada: ${solicitud.tipo}`,
+          body: `"${solicitud.archivo}" fue registrado y quedó en revisión oficial. Te avisaremos cuando haya respuesta.`,
+          time: 'Ahora',
+          unread: true,
+        },
+        ...prev,
+      ]);
+    },
+    []
+  );
+
   const unreadCount = notificaciones.filter((n) => n.unread).length;
 
   return (
@@ -99,6 +134,13 @@ export default function App() {
             areas={areas}
             solicitudes={solicitudes}
             onSolicitar={handleSolicitar}
+          />
+        )}
+        {view === 'solicitudes' && (
+          <SolicitudesView
+            tipos={tiposDocumento}
+            solicitudes={solicitudesEnviadas}
+            onEnviar={handleEnviarSolicitud}
           />
         )}
         {view === 'notif' && <NotificacionesView notificaciones={notificaciones} />}

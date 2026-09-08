@@ -464,9 +464,11 @@ section.block h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 10px 0;
   border-bottom: 1px solid var(--line);
   font-size: 13.5px;
+  flex-wrap: wrap;
 }
 .sol-row:last-child {
   border-bottom: none;
@@ -480,6 +482,131 @@ section.block h2 {
 .status-chip.pending {
   background: var(--gold-soft);
   color: #6b4c14;
+}
+.status-chip.ok {
+  background: var(--green-soft);
+  color: var(--green);
+}
+.status-chip.urgent {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+/* ---------- Solicitudes ---------- */
+.sol-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+}
+.sol-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+.sol-form .field > span {
+  font-weight: 500;
+  color: var(--ink);
+}
+.sol-form select,
+.sol-form textarea {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13.5px;
+  background: var(--panel);
+  color: var(--ink);
+  resize: vertical;
+}
+.file-sim {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px dashed var(--navy-soft);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.file-sim:hover {
+  border-color: var(--navy);
+  background: var(--navy-soft);
+}
+.file-sim.attached {
+  border-style: solid;
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: var(--ink);
+}
+.file-sim strong {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+}
+.file-sim-hint {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.file-sim-remove {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.file-sim-remove:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+.sol-form small {
+  color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+}
+.sol-form .btn {
+  align-self: flex-start;
+}
+.sol-success {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  background: var(--green-soft);
+  border-radius: 4px;
+  font-size: 13.5px;
+}
+.sol-success-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.sol-success p {
+  margin: 3px 0 0;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+}
+.sol-archivo {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
 }
 
 /* ---------- Notificaciones ---------- */

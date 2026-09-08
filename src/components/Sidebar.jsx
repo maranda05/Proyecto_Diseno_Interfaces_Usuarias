@@ -2,6 +2,7 @@ export default function Sidebar({ usuario, currentView, onNavigate, unreadCount 
   const items = [
     { key: 'proceso', label: 'Mi proceso' },
     { key: 'temas', label: 'Temas disponibles' },
+    { key: 'solicitudes', label: 'Solicitudes' },
     { key: 'notif', label: 'Notificaciones', badge: unreadCount },
     { key: 'documentos', label: 'Documentos' },
   ];
